@@ -2,15 +2,40 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 import random
+import traceback
 
-# We'll use deterministic random but with fixed seeds for consistency
-# Normally this would connect to a real API for live data
+# Import the web scraper functions
+try:
+    from web_scraper import (
+        get_vegetable_data_from_web,
+        get_market_data_from_web,
+        get_trend_data_from_web,
+        get_demand_supply_data_from_web,
+        get_current_date
+    )
+    WEB_SCRAPER_AVAILABLE = True
+except ImportError:
+    print("Web scraper not available, using mock data")
+    WEB_SCRAPER_AVAILABLE = False
 
+# Function to get real-time data or fall back to mock data
 def get_vegetable_data(vegetable=None, market="अपना बाजार मुंबई"):
     """
     Get current price data for vegetables.
     If vegetable is None, returns data for all vegetables.
+    Attempts to get real data from the web, falls back to mock data if unavailable.
     """
+    # Try to get real data from the web
+    if WEB_SCRAPER_AVAILABLE:
+        try:
+            real_data = get_vegetable_data_from_web(vegetable, market)
+            if real_data:  # If we got data from the web
+                return real_data
+        except Exception as e:
+            print(f"Error getting real vegetable data: {e}")
+            traceback.print_exc()
+    
+    # If web scraper not available or failed, use mock data
     # Set seed for deterministic "random" data
     random.seed(hash(f"{vegetable}{market}{datetime.now().strftime('%Y-%m-%d')}"))
     
@@ -51,7 +76,19 @@ def get_market_data(vegetable="टोमॅटो", market=None, details=False):
     """
     Get prices for a vegetable across different markets.
     If market is specified, returns detailed data for that market.
+    Attempts to get real data from the web, falls back to mock data if unavailable.
     """
+    # Try to get real data from the web
+    if WEB_SCRAPER_AVAILABLE:
+        try:
+            real_data = get_market_data_from_web(vegetable, market, details)
+            if real_data:  # If we got data from the web
+                return real_data
+        except Exception as e:
+            print(f"Error getting real market data: {e}")
+            traceback.print_exc()
+    
+    # If web scraper not available or failed, use mock data
     # Set seed for deterministic "random" data
     random.seed(hash(f"{vegetable}{datetime.now().strftime('%Y-%m-%d')}"))
     
@@ -104,7 +141,19 @@ def get_market_data(vegetable="टोमॅटो", market=None, details=False):
 def get_trend_data(vegetable, market, timeframe):
     """
     Get historical price trend data for a vegetable in a specific market.
+    Attempts to get real data from the web, falls back to mock data if unavailable.
     """
+    # Try to get real trend data from the web
+    if WEB_SCRAPER_AVAILABLE:
+        try:
+            real_data = get_trend_data_from_web(vegetable, market, timeframe)
+            if real_data:  # If we got data from the web
+                return real_data
+        except Exception as e:
+            print(f"Error getting real trend data: {e}")
+            traceback.print_exc()
+    
+    # If web scraper not available or failed, use mock data
     # Set seed for deterministic "random" data
     random.seed(hash(f"{vegetable}{market}{timeframe}"))
     
