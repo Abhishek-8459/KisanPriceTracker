@@ -4,17 +4,28 @@ import plotly.express as px
 import plotly.graph_objects as go
 from datetime import datetime, timedelta
 import numpy as np
+import base64
 from translator import translate, TRANSLATIONS
 from data import get_vegetable_data, get_market_data, get_trend_data, get_demand_supply_data
 from utils import format_price, get_vegetable_icon, get_market_icon
 
 # Set page configuration
 st.set_page_config(
-    page_title="किसान मूल्य विश्लेषक | Farmer Price Analyzer",
-    page_icon="🌱",
+    page_title="कृषी प्रवाह | Krushi Pravah",
+    page_icon="assets/images/krushi_pravah_logo.svg",
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+# Load CSS
+with open('assets/styles.css') as f:
+    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# Function to get base64 encoded image for background
+def get_background_image_base64(image_path):
+    with open(image_path, "rb") as image_file:
+        encoded_string = base64.b64encode(image_file.read()).decode()
+    return f"data:image/svg+xml;base64,{encoded_string}"
 
 # Initialize session state for language preference
 if 'language' not in st.session_state:
@@ -30,7 +41,10 @@ def change_language():
 # Language toggle in sidebar
 with st.sidebar:
     lang = st.session_state['language']
-    st.title(translate("किसान मूल्य विश्लेषक", lang))
+    
+    # Display app logo
+    st.image("assets/images/krushi_pravah_logo.svg", width=100)
+    st.title(translate("कृषी प्रवाह", lang))
     
     # Language toggle button
     if lang == "marathi":
@@ -50,14 +64,31 @@ with st.sidebar:
     
     # Footer
     st.sidebar.markdown("---")
-    st.sidebar.caption(translate("© 2023 किसान मूल्य विश्लेषक", lang))
+    st.sidebar.caption(translate("© 2025 कृषी प्रवाह", lang))
 
 # Main content
 lang = st.session_state['language']  # Get current language
 
 # HOMEPAGE
 if page == translate("मुख्यपृष्ठ", lang):
-    st.title(translate("महाराष्ट्र भाजीपाला मूल्य विश्लेषक", lang))
+    # Set background image
+    farm_bg = get_background_image_base64("assets/images/farm_background.svg")
+    st.markdown(
+        f"""
+        <div style="
+            background-image: url('{farm_bg}');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        ">
+            <h1 style="color: #fff; text-shadow: 2px 2px 4px #000;">{translate("कृषी प्रवाह", lang)}</h1>
+            <h3 style="color: #fff; text-shadow: 1px 1px 2px #000;">{translate("महाराष्ट्र भाजीपाला मूल्य विश्लेषक", lang)}</h3>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
     st.subheader(translate("आजचे बाजारभाव", lang))
     
     # Filters
@@ -144,7 +175,23 @@ if page == translate("मुख्यपृष्ठ", lang):
 
 # MARKET COMPARISON PAGE
 elif page == translate("बाजार तुलना", lang):
-    st.title(translate("बाजार तुलना", lang))
+    # Set background image
+    market_bg = get_background_image_base64("assets/images/market_background.svg")
+    st.markdown(
+        f"""
+        <div style="
+            background-image: url('{market_bg}');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        ">
+            <h1 style="color: #fff; text-shadow: 2px 2px 4px #000;">{translate("बाजार तुलना", lang)}</h1>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
     
     # Vegetable selection
     vegetable_options = ["टोमॅटो", "कांदा", "बटाटा", "वांगे", "कोबी", "फ्लॉवर", "भेंडी", "गाजर"]
@@ -210,7 +257,23 @@ elif page == translate("बाजार तुलना", lang):
 
 # PRICE TRENDS PAGE
 elif page == translate("मूल्य प्रवृत्ती", lang):
-    st.title(translate("मूल्य प्रवृत्ती", lang))
+    # Set background image
+    chart_bg = get_background_image_base64("assets/images/chart_background.svg")
+    st.markdown(
+        f"""
+        <div style="
+            background-image: url('{chart_bg}');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        ">
+            <h1 style="color: #fff; text-shadow: 2px 2px 4px #000;">{translate("मूल्य प्रवृत्ती", lang)}</h1>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
     
     # Filters
     col1, col2, col3 = st.columns(3)
@@ -379,7 +442,23 @@ elif page == translate("मूल्य प्रवृत्ती", lang):
 
 # DEMAND AND SUPPLY PAGE
 elif page == translate("मागणी आणि पुरवठा", lang):
-    st.title(translate("मागणी आणि पुरवठा", lang))
+    # Set background image
+    supply_demand_bg = get_background_image_base64("assets/images/supply_demand_background.svg")
+    st.markdown(
+        f"""
+        <div style="
+            background-image: url('{supply_demand_bg}');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        ">
+            <h1 style="color: #fff; text-shadow: 2px 2px 4px #000;">{translate("मागणी आणि पुरवठा", lang)}</h1>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
     
     # Vegetable selection
     vegetable_options = ["टोमॅटो", "कांदा", "बटाटा", "वांगे", "कोबी", "फ्लॉवर", "भेंडी", "गाजर"]

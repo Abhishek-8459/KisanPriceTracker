@@ -3,6 +3,7 @@
 # Dictionary of translations
 TRANSLATIONS = {
     # General UI elements
+    "कृषी प्रवाह": {"english": "Krushi Pravah", "marathi": "कृषी प्रवाह"},
     "किसान मूल्य विश्लेषक": {"english": "Farmer Price Analyzer", "marathi": "किसान मूल्य विश्लेषक"},
     "महाराष्ट्र भाजीपाला मूल्य विश्लेषक": {"english": "Maharashtra Vegetable Price Analyzer", "marathi": "महाराष्ट्र भाजीपाला मूल्य विश्लेषक"},
     "मेनू": {"english": "Menu", "marathi": "मेनू"},
