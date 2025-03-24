@@ -212,7 +212,19 @@ def get_trend_data(vegetable, market, timeframe):
 def get_demand_supply_data(vegetable):
     """
     Get demand and supply data for a specific vegetable.
+    Attempts to get real data from the web, falls back to mock data if unavailable.
     """
+    # Try to get real demand-supply data from the web
+    if WEB_SCRAPER_AVAILABLE:
+        try:
+            real_data = get_demand_supply_data_from_web(vegetable)
+            if real_data:  # If we got data from the web
+                return real_data
+        except Exception as e:
+            print(f"Error getting real demand-supply data: {e}")
+            traceback.print_exc()
+    
+    # If web scraper not available or failed, use mock data
     # Set seed for deterministic "random" data
     random.seed(hash(f"{vegetable}{datetime.now().strftime('%Y-%m-%d')}"))
     

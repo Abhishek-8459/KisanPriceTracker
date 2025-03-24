@@ -9,6 +9,13 @@ from translator import translate, TRANSLATIONS
 from data import get_vegetable_data, get_market_data, get_trend_data, get_demand_supply_data
 from utils import format_price, get_vegetable_icon, get_market_icon
 
+# Try to import web scraper functions for data source info
+try:
+    from web_scraper import get_current_date
+    WEB_SCRAPER_AVAILABLE = True
+except ImportError:
+    WEB_SCRAPER_AVAILABLE = False
+
 # Set page configuration
 st.set_page_config(
     page_title="कृषी प्रवाह | Krushi Pravah",
