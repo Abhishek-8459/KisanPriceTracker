@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#edf8fb;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#b2e2e2;stop-opacity:0.5" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGradient)" />
+  
+  <!-- Supply-demand curve decorative elements -->
+  <g opacity="0.1">
+    <!-- X and Y axis -->
+    <line x1="200" y1="800" x2="1600" y2="800" stroke="#636363" stroke-width="3" />
+    <line x1="200" y1="300" x2="200" y2="800" stroke="#636363" stroke-width="3" />
+    
+    <!-- Supply curve -->
+    <path d="M 200,800 C 400,700 800,550 1600,300" stroke="#66c2a4" stroke-width="5" fill="none" />
+    
+    <!-- Demand curve -->
+    <path d="M 200,300 C 400,400 800,600 1600,800" stroke="#fc8d59" stroke-width="5" fill="none" />
+    
+    <!-- Equilibrium point -->
+    <circle cx="900" cy="550" r="10" fill="#636363" />
+    
+    <!-- Decorative grid lines -->
+    <line x1="200" y1="550" x2="1600" y2="550" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="5,5" />
+    <line x1="900" y1="300" x2="900" y2="800" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="5,5" />
+    
+    <!-- Decorative labels -->
+    <rect x="1550" y="810" width="80" height="30" rx="5" fill="#636363" opacity="0.4" />
+    <rect x="160" y="270" width="30" height="80" rx="5" fill="#636363" opacity="0.4" />
+    <rect x="150" y="540" width="40" height="30" rx="5" fill="#636363" opacity="0.4" />
+    <rect x="880" y="810" width="40" height="30" rx="5" fill="#636363" opacity="0.4" />
+  </g>
+</svg>

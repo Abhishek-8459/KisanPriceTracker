@@ -1,0 +1,189 @@
+/* Custom CSS for Krushi Pravah */
+
+/* Main container styling */
+.main {
+    padding: 1rem;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+/* Sidebar styling */
+.sidebar .sidebar-content {
+    background-image: linear-gradient(to bottom, #FF9933, #FFFFFF, #138808);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+/* Cards styling */
+.stCard {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    border-left: 4px solid #FF9933;
+    transition: transform 0.3s ease;
+}
+
+.stCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Price cards */
+.price-card {
+    background: linear-gradient(to bottom right, #FFFFFF, #F8F8F8);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border: 1px solid #EEEEEE;
+}
+
+.price-card h4 {
+    margin-bottom: 0.5rem;
+    color: #333333;
+}
+
+.price-card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FF9933;
+}
+
+/* Metric containers */
+.metric-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    padding: 0.5rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Buttons styling */
+.stButton button {
+    background-color: #FF9933;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.stButton button:hover {
+    background-color: #138808;
+    transform: scale(1.05);
+}
+
+/* Headers styling */
+h1, h2, h3 {
+    color: #333333;
+    font-weight: bold;
+}
+
+h1 {
+    border-bottom: 3px solid #FF9933;
+    padding-bottom: 0.5rem;
+}
+
+/* Data frames */
+.dataframe-container {
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #FF9933;
+    color: white;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Selectbox styling */
+.stSelectbox {
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 8px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Vegetable icon wrapper */
+.vegetable-icon {
+    background: white;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Market icon wrapper */
+.market-icon {
+    background: white;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* App header */
+.app-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    width: 60px;
+    margin-right: 1rem;
+}
+
+.title-container h1 {
+    margin: 0;
+    border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vegetable-icon, .market-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
