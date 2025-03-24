@@ -196,7 +196,7 @@ if page == translate("मुख्यपृष्ठ", lang):
     
     # Last updated info
     st.markdown("---")
-    show_last_updated_info(lang)
+    st.caption(f"{translate('अंतिम अद्यतनित', lang)}: {datetime.now().strftime('%d-%m-%Y %H:%M')}")
 
 # MARKET COMPARISON PAGE
 elif page == translate("बाजार तुलना", lang):
@@ -277,7 +277,7 @@ elif page == translate("बाजार तुलना", lang):
     st.dataframe(detailed_df, use_container_width=True)
     
     # Last updated info
-    show_last_updated_info(lang)
+    st.markdown("---")
     st.caption(f"{translate('अंतिम अद्यतनित', lang)}: {datetime.now().strftime('%d-%m-%Y %H:%M')}")
 
 # PRICE TRENDS PAGE
@@ -462,7 +462,7 @@ elif page == translate("मूल्य प्रवृत्ती", lang):
         st.warning(translate("पुरेशी डेटा उपलब्ध नाही अंदाज काढण्यासाठी", lang))
     
     # Last updated info
-    show_last_updated_info(lang)
+    st.markdown("---")
     st.caption(f"{translate('अंतिम अद्यतनित', lang)}: {datetime.now().strftime('%d-%m-%Y %H:%M')}")
 
 # DEMAND AND SUPPLY PAGE
@@ -633,5 +633,5 @@ elif page == translate("मागणी आणि पुरवठा", lang):
     st.plotly_chart(fig, use_container_width=True)
     
     # Last updated info
-    show_last_updated_info(lang)
+    st.markdown("---")
     st.caption(f"{translate('अंतिम अद्यतनित', lang)}: {datetime.now().strftime('%d-%m-%Y %H:%M')}")
