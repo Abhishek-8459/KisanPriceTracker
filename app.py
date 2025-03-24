@@ -34,6 +34,24 @@ def get_background_image_base64(image_path):
         encoded_string = base64.b64encode(image_file.read()).decode()
     return f"data:image/svg+xml;base64,{encoded_string}"
 
+# Function to display the last updated information with data source
+def show_last_updated_info(lang):
+    st.markdown("---")
+    
+    # Show data source and date
+    if WEB_SCRAPER_AVAILABLE:
+        try:
+            # Get current date from APMC website if available
+            apmc_date = get_current_date()
+            st.caption(f"{translate('अंतिम अद्यतनित', lang)}: {apmc_date} | " + 
+                      f"{translate('डेटा स्त्रोत', lang)}: {translate('पुणे APMC वेबसाइट', lang)}")
+        except Exception:
+            # Fallback to current date and time
+            st.caption(f"{translate('अंतिम अद्यतनित', lang)}: {datetime.now().strftime('%d-%m-%Y %H:%M')}")
+    else:
+        # Use current date and time if web scraper is not available
+        st.caption(f"{translate('अंतिम अद्यतनित', lang)}: {datetime.now().strftime('%d-%m-%Y %H:%M')}")
+
 # Initialize session state for language preference
 if 'language' not in st.session_state:
     st.session_state['language'] = "marathi"  # Default language
