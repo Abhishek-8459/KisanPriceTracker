@@ -363,11 +363,11 @@ td {
 }
 
 .market-state.surplus {
-  background-color: #4CAF50;
+  background-color:red;
 }
 
 .market-state.shortage {
-  background-color: #F44336;
+  background-color: green;
 }
 
 .market-state.balanced {

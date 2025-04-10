@@ -197,7 +197,7 @@ function populateSelectOptions() {
     
     // Market options
     const marketOptions = [
-        "अपना बाजार मुंबई", "पुणे बाजार", "नागपूर बाजार", "नाशिक बाजार", "कोल्हापूर बाजार"
+        "पुणे बाजार"
     ];
     
     // Timeframe options
