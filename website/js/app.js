@@ -16,6 +16,16 @@ const initialVegetableData = {
     "गाजर": {"current_price": 35, "price_change": 3}
 };
 
+// Make sure we have a default vegetable even if user selection fails
+function getDefaultVegetable() {
+    return "टोमॅटो";
+}
+
+// Make sure we have a default market even if user selection fails
+function getDefaultMarket() {
+    return "अपना बाजार मुंबई";
+}
+
 const initialMarketData = {
     "अपना बाजार मुंबई": 40,
     "पुणे बाजार": 38,
@@ -278,10 +288,17 @@ function updateHomePageData() {
     const marketSelect = document.getElementById('market-select');
     const vegetableSelect = document.getElementById('vegetable-select');
     
-    if (!marketSelect || !vegetableSelect) return;
+    // Make sure we have valid selections, using defaults if needed
+    let selectedMarket = getDefaultMarket();
+    let selectedVegetable = getDefaultVegetable();
     
-    const selectedMarket = marketSelect.value;
-    const selectedVegetable = vegetableSelect.value;
+    if (marketSelect && marketSelect.value) {
+        selectedMarket = marketSelect.value;
+    }
+    
+    if (vegetableSelect && vegetableSelect.value) {
+        selectedVegetable = vegetableSelect.value;
+    }
     
     // Update current price section
     updateCurrentPriceSection(selectedVegetable, selectedMarket);
@@ -451,9 +468,13 @@ function updateQuickMarketComparisonSection(vegetable) {
  */
 function updateMarketComparisonData() {
     const vegetableSelect = document.getElementById('comparison-vegetable-select');
-    if (!vegetableSelect) return;
     
-    const selectedVegetable = vegetableSelect.value;
+    // Make sure we have a valid selection, using default if needed
+    let selectedVegetable = getDefaultVegetable();
+    
+    if (vegetableSelect && vegetableSelect.value) {
+        selectedVegetable = vegetableSelect.value;
+    }
     
     // Update the market comparison chart
     updateMarketComparisonChart(selectedVegetable);
@@ -609,11 +630,22 @@ function updatePriceTrendsData() {
     const marketSelect = document.getElementById('trend-market-select');
     const timeframeSelect = document.getElementById('trend-timeframe-select');
     
-    if (!vegetableSelect || !marketSelect || !timeframeSelect) return;
+    // Make sure we have valid selections, using defaults if needed
+    let selectedVegetable = getDefaultVegetable();
+    let selectedMarket = getDefaultMarket();
+    let selectedTimeframe = "दैनिक"; // Default timeframe
     
-    const selectedVegetable = vegetableSelect.value;
-    const selectedMarket = marketSelect.value;
-    const selectedTimeframe = timeframeSelect.value;
+    if (vegetableSelect && vegetableSelect.value) {
+        selectedVegetable = vegetableSelect.value;
+    }
+    
+    if (marketSelect && marketSelect.value) {
+        selectedMarket = marketSelect.value;
+    }
+    
+    if (timeframeSelect && timeframeSelect.value) {
+        selectedTimeframe = timeframeSelect.value;
+    }
     
     // Update price trend chart
     updatePriceTrendChart(selectedVegetable, selectedMarket, selectedTimeframe);
@@ -834,9 +866,13 @@ function updatePriceStatistics(vegetable, market, timeframe) {
  */
 function updateDemandSupplyData() {
     const vegetableSelect = document.getElementById('demand-vegetable-select');
-    if (!vegetableSelect) return;
     
-    const selectedVegetable = vegetableSelect.value;
+    // Make sure we have a valid selection, using default if needed
+    let selectedVegetable = getDefaultVegetable();
+    
+    if (vegetableSelect && vegetableSelect.value) {
+        selectedVegetable = vegetableSelect.value;
+    }
     
     // Update demand-supply gauge
     updateDemandSupplyGauge(selectedVegetable);
