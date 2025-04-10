@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>कृषी प्रवाह | Krushi Pravah</title>
+    <link rel="icon" href="images/krushi_pravah_logo.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Chart.js for interactive charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <img src="images/krushi_pravah_logo.svg" alt="Krushi Pravah Logo">
+                <h2 data-translate>कृषी प्रवाह</h2>
+            </div>
+            
+            <div class="language-toggle">
+                <button id="language-toggle" class="language-button">Switch to English</button>
+            </div>
+            
+            <div class="sidebar-menu">
+                <h3 data-translate>मेनू</h3>
+                <a href="#" class="menu-item active" data-page="home" data-translate>मुख्यपृष्ठ</a>
+                <a href="#" class="menu-item" data-page="market-comparison" data-translate>बाजार तुलना</a>
+                <a href="#" class="menu-item" data-page="price-trends" data-translate>मूल्य प्रवृत्ती</a>
+                <a href="#" class="menu-item" data-page="demand-supply" data-translate>मागणी आणि पुरवठा</a>
+            </div>
+            
+            <div class="sidebar-footer">
+                <p>© 2025 कृषी प्रवाह</p>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Home Page -->
+            <div id="home-page" class="page active">
+                <div class="page-header" style="background-image: url('images/farm_background.svg');">
+                    <h1 data-translate>कृषी प्रवाह</h1>
+                    <h3 data-translate>महाराष्ट्र भाजीपाला मूल्य विश्लेषक</h3>
+                </div>
+                
+                <h2 data-translate>आजचे बाजारभाव</h2>
+                
+                <!-- Filters -->
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="market-select" data-translate>बाजार निवडा</label>
+                            <select id="market-select" class="form-control" data-translate-options></select>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="vegetable-select" data-translate>भाजी निवडा</label>
+                            <select id="vegetable-select" class="form-control" data-translate-options></select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Current Price Card -->
+                <h3 data-translate>वर्तमान किंमत</h3>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="vegetable-icon" id="current-price-icon"></div>
+                    </div>
+                    <div class="col-9">
+                        <h3 id="current-price-veg-name"></h3>
+                        <h2 id="current-price-value"></h2>
+                        <p id="current-price-change"></p>
+                    </div>
+                </div>
+                
+                <!-- Today's Top Vegetables -->
+                <h3 data-translate>आजचे सर्वोत्तम भाज्या</h3>
+                <div class="row" id="top-vegetables-container">
+                    <!-- Vegetable cards will be inserted here by JavaScript -->
+                </div>
+                
+                <!-- Quick Market Overview -->
+                <h3 data-translate>बाजार तुलना</h3>
+                <div class="row" id="quick-market-container">
+                    <!-- Market cards will be inserted here by JavaScript -->
+                </div>
+                
+                <!-- Last updated info -->
+                <div class="last-updated"></div>
+            </div>
+            
+            <!-- Market Comparison Page -->
+            <div id="market-comparison-page" class="page">
+                <div class="page-header" style="background-image: url('images/market_background.svg');">
+                    <h1 data-translate>बाजार तुलना</h1>
+                </div>
+                
+                <!-- Vegetable Selection -->
+                <div class="form-group">
+                    <label for="comparison-vegetable-select" data-translate>भाजी निवडा</label>
+                    <select id="comparison-vegetable-select" class="form-control" data-translate-options></select>
+                </div>
+                
+                <!-- Market Comparison Chart -->
+                <div class="chart-container">
+                    <canvas id="market-comparison-chart"></canvas>
+                </div>
+                
+                <!-- Market Details Table -->
+                <h3 data-translate>बाजार तपशील</h3>
+                <div id="market-details-table"></div>
+                
+                <!-- Last updated info -->
+                <div class="last-updated"></div>
+            </div>
+            
+            <!-- Price Trends Page -->
+            <div id="price-trends-page" class="page">
+                <div class="page-header" style="background-image: url('images/chart_background.svg');">
+                    <h1 data-translate>मूल्य प्रवृत्ती</h1>
+                </div>
+                
+                <!-- Filters -->
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="trend-vegetable-select" data-translate>भाजी निवडा</label>
+                            <select id="trend-vegetable-select" class="form-control" data-translate-options></select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="trend-market-select" data-translate>बाजार निवडा</label>
+                            <select id="trend-market-select" class="form-control" data-translate-options></select>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="trend-timeframe-select" data-translate>कालावधी निवडा</label>
+                            <select id="trend-timeframe-select" class="form-control" data-translate-options></select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Price Trend Chart -->
+                <div class="chart-container">
+                    <canvas id="price-trend-chart"></canvas>
+                </div>
+                
+                <!-- Price Statistics -->
+                <h3 data-translate>मूल्य आकडेवारी</h3>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="stats-card">
+                            <h4 data-translate>सरासरी किंमत</h4>
+                            <p id="avg-price"></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="stats-card">
+                            <h4 data-translate>सर्वाधिक किंमत</h4>
+                            <p id="max-price"></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="stats-card">
+                            <h4 data-translate>किमान किंमत</h4>
+                            <p id="min-price"></p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="stats-card">
+                            <h4 data-translate>शुद्ध बदल</h4>
+                            <p id="net-change"></p>
+                            <span id="pct-change"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Price Forecast Note -->
+                <div class="card">
+                    <h3 data-translate>मूल्य अंदाज</h3>
+                    <p data-translate>(साध्या प्रवृत्ती विश्लेषणावर आधारित)</p>
+                </div>
+                
+                <!-- Last updated info -->
+                <div class="last-updated"></div>
+            </div>
+            
+            <!-- Demand and Supply Page -->
+            <div id="demand-supply-page" class="page">
+                <div class="page-header" style="background-image: url('images/supply_demand_background.svg');">
+                    <h1 data-translate>मागणी आणि पुरवठा</h1>
+                </div>
+                
+                <!-- Vegetable Selection -->
+                <div class="form-group">
+                    <label for="demand-vegetable-select" data-translate>भाजी निवडा</label>
+                    <select id="demand-vegetable-select" class="form-control" data-translate-options></select>
+                </div>
+                
+                <!-- Current Demand-Supply Balance -->
+                <h3 data-translate>वर्तमान मागणी-पुरवठा संतुलन</h3>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="gauge-container">
+                            <canvas id="demand-supply-gauge"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="card">
+                            <h4 data-translate>मागणी निर्देशांक</h4>
+                            <p><span id="demand-index"></span>/10</p>
+                            
+                            <h4 data-translate>पुरवठा निर्देशांक</h4>
+                            <p><span id="supply-index"></span>/10</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Market State and Analysis -->
+                <div id="market-state-container"></div>
+                
+                <!-- Regional Supply Data -->
+                <h3 data-translate>प्रादेशिक पुरवठा</h3>
+                <div id="regional-supply-table"></div>
+                
+                <!-- Supply Forecast Chart -->
+                <h3 data-translate>पुढील 7 दिवसांसाठी पुरवठा अंदाज</h3>
+                <div class="chart-container">
+                    <canvas id="supply-forecast-chart"></canvas>
+                </div>
+                
+                <!-- Last updated info -->
+                <div class="last-updated"></div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer">
+                <p>© 2025 कृषी प्रवाह | Developed for Maharashtra Farmers</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="js/translator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

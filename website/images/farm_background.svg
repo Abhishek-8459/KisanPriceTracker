@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f9e8;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ccebc5;stop-opacity:0.5" />
+    </linearGradient>
+    <!-- Pattern for fields -->
+    <pattern id="field-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <path d="M0,0 L100,0 L100,100 L0,100 Z" fill="#e6f5d0" />
+      <path d="M0,20 L100,20" stroke="#c7e9b4" stroke-width="1" />
+      <path d="M0,40 L100,40" stroke="#c7e9b4" stroke-width="1" />
+      <path d="M0,60 L100,60" stroke="#c7e9b4" stroke-width="1" />
+      <path d="M0,80 L100,80" stroke="#c7e9b4" stroke-width="1" />
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#bgGradient)" />
+  
+  <!-- Farm field patterns in the background -->
+  <rect x="0" y="400" width="1920" height="680" fill="url(#field-pattern)" opacity="0.3" />
+  
+  <!-- Decorative elements: Simplified mountains in the background -->
+  <path d="M0,400 Q480,200 960,400 T1920,400 V1080 H0 Z" fill="#a8ddb5" opacity="0.2" />
+  <path d="M0,450 Q480,300 960,450 T1920,450 V1080 H0 Z" fill="#7bccc4" opacity="0.1" />
+  
+  <!-- Sun -->
+  <circle cx="1750" cy="150" r="60" fill="#FED976" opacity="0.6" />
+  <circle cx="1750" cy="150" r="80" fill="#FED976" opacity="0.2" />
+  
+  <!-- Simplified tree silhouettes -->
+  <g opacity="0.4">
+    <path d="M100,500 L120,500 L110,450 Z" fill="#43a2ca" />
+    <rect x="108" y="500" width="4" height="20" fill="#636363" />
+    
+    <path d="M200,520 L230,520 L215,450 Z" fill="#43a2ca" />
+    <rect x="213" y="520" width="4" height="25" fill="#636363" />
+    
+    <path d="M1700,520 L1730,520 L1715,450 Z" fill="#43a2ca" />
+    <rect x="1713" y="520" width="4" height="25" fill="#636363" />
+    
+    <path d="M1800,510 L1820,510 L1810,460 Z" fill="#43a2ca" />
+    <rect x="1808" y="510" width="4" height="20" fill="#636363" />
+  </g>
+</svg>
