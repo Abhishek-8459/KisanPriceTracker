@@ -126,17 +126,20 @@ function updatePageLanguage(language) {
     const translatableElements = document.querySelectorAll('[data-translate]');
     
     translatableElements.forEach(element => {
-        const originalText = element.getAttribute('data-translate');
-        element.textContent = translate(originalText, language);
+        // If data-translate has a value, use it, otherwise use the element's content
+        const originalText = element.getAttribute('data-translate') || element.textContent;
+        if (originalText && originalText.trim() !== '') {
+            element.textContent = translate(originalText, language);
+        }
     });
     
-    // Update all option elements in selects with data-translate-option
-    const selectElements = document.querySelectorAll('select[data-translate-options]');
+    // Update all option elements in selects
+    const selectElements = document.querySelectorAll('select');
     
     selectElements.forEach(select => {
         Array.from(select.options).forEach(option => {
-            const originalText = option.getAttribute('data-translate-value');
-            if (originalText) {
+            const originalText = option.getAttribute('data-translate-value') || option.textContent;
+            if (originalText && originalText.trim() !== '') {
                 option.textContent = translate(originalText, language);
             }
         });
@@ -144,10 +147,12 @@ function updatePageLanguage(language) {
     
     // Update language toggle button
     const languageButton = document.getElementById('language-toggle');
-    if (language.toLowerCase() === "marathi") {
-        languageButton.textContent = "Switch to English";
-    } else {
-        languageButton.textContent = "मराठीमध्ये बदला";
+    if (languageButton) {
+        if (language.toLowerCase() === "marathi") {
+            languageButton.textContent = "Switch to English";
+        } else {
+            languageButton.textContent = "मराठीमध्ये बदला";
+        }
     }
 }
 
